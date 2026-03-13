@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shalin Porwal — Cover Letter</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --surface: #12121a;
+  --card: #1a1a26;
+  --accent: #c9a55c;
+  --accent2: #5ca5c9;
+  --text: #e8e6e1;
+  --muted: #8a8a9a;
+  --border: rgba(201,165,92,0.15);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+.credit-note {
+  position: fixed;
+  top: 20px;
+  right: 50px;
+  z-index: 101;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+  line-height: 1.6;
+  text-align: right;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+  max-width: 260px;
+}
+.credit-note:hover { opacity: 0.85; }
+.credit-note .me { color: var(--accent); font-weight: 500; }
+
+.progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  z-index: 1000;
+  transition: width 0.15s;
+}
+
+.nav-dots {
+  position: fixed;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.nav-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid var(--muted);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+.nav-dot.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: scale(1.4);
+  box-shadow: 0 0 12px rgba(201,165,92,0.4);
+}
+.nav-dot:hover { border-color: var(--accent); }
+.nav-dot .tooltip {
+  position: absolute;
+  right: 20px; top: 50%;
+  transform: translateY(-50%);
+  background: var(--card);
+  color: var(--text);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  border: 1px solid var(--border);
+}
+.nav-dot:hover .tooltip { opacity: 1; }
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 60px 40px;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.hero-bg .orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  animation: float 8s ease-in-out infinite;
+}
+.hero-bg .orb:nth-child(1) {
+  width: 500px; height: 500px;
+  background: rgba(201,165,92,0.08);
+  top: -100px; right: -100px;
+}
+.hero-bg .orb:nth-child(2) {
+  width: 400px; height: 400px;
+  background: rgba(92,165,201,0.06);
+  bottom: -50px; left: -80px;
+  animation-delay: -3s;
+}
+.hero-bg .orb:nth-child(3) {
+  width: 300px; height: 300px;
+  background: rgba(201,165,92,0.05);
+  top: 40%; left: 50%;
+  animation-delay: -5s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 15px) scale(0.95); }
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  max-width: 850px;
+}
+
+.hero-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(46px, 7.5vw, 86px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.3s forwards;
+}
+.hero-name .accent { color: var(--accent); }
+
+.cfa-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(201,165,92,0.1);
+  border: 1px solid rgba(201,165,92,0.35);
+  border-radius: 20px;
+  padding: 8px 22px;
+  margin-bottom: 30px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.6s forwards;
+}
+.cfa-badge .dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px rgba(201,165,92,0.6);
+  animation: pulse 2s infinite;
+}
+.cfa-badge span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.hero-tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 35px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.9s forwards;
+}
+.hero-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--muted);
+  transition: all 0.3s;
+}
+.hero-tag:nth-child(1) { animation: tagGlow 4s 2s infinite; }
+.hero-tag:nth-child(2) { animation: tagGlow 4s 2.8s infinite; }
+.hero-tag:nth-child(3) { animation: tagGlow 4s 3.6s infinite; }
+.hero-tag:nth-child(4) { animation: tagGlow 4s 4.4s infinite; }
+@keyframes tagGlow {
+  0%, 100% { border-color: var(--border); color: var(--muted); }
+  15% { border-color: rgba(201,165,92,0.5); color: var(--accent); }
+  30% { border-color: var(--border); color: var(--muted); }
+}
+
+.hero-meta {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+  opacity: 0;
+  animation: fadeUp 0.8s 1.2s forwards;
+}
+.hero-meta span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero-meta span::before {
+  content: '';
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.scroll-invite {
+  opacity: 0;
+  animation: fadeUp 0.8s 1.6s forwards;
+  text-align: center;
+}
+.scroll-invite p {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+}
+.scroll-line {
+  width: 1px;
+  height: 45px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  margin: 0 auto;
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 1; transform: scaleY(1); }
+  50% { opacity: 0.3; transform: scaleY(0.5); }
+}
+
+.section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 80px 40px;
+  position: relative;
+}
+.section-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-label::before {
+  content: '';
+  width: 30px; height: 1px;
+  background: var(--accent);
+}
+
+.section-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  margin-bottom: 30px;
+  line-height: 1.25;
+}
+
+.section-text {
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--muted);
+  font-weight: 300;
+  max-width: 750px;
+}
+.section-text strong { color: var(--text); font-weight: 500; }
+.section-text .highlight { color: var(--accent); font-weight: 500; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.15s; }
+.reveal-delay-2 { transition-delay: 0.3s; }
+.reveal-delay-3 { transition-delay: 0.45s; }
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 35px;
+}
+.skill-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 22px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s;
+}
+.skill-card:hover::before { transform: scaleX(1); }
+.skill-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(201,165,92,0.3);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+.skill-card .icon { font-size: 22px; margin-bottom: 10px; }
+.skill-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 6px; color: var(--text); }
+.skill-card p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+.timeline {
+  margin-top: 35px;
+  position: relative;
+  padding-left: 30px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 8px; bottom: 8px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
+}
+.timeline-item { position: relative; margin-bottom: 28px; }
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -34px; top: 8px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: var(--bg);
+}
+.timeline-item.active::before {
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(201,165,92,0.5);
+}
+.timeline-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.timeline-role { font-weight: 600; font-size: 15px; margin-bottom: 2px; }
+.timeline-company { font-size: 13px; color: var(--muted); }
+
+.cta-section {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 40px;
+}
+.cta-content { position: relative; }
+.cta-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.cta-text {
+  font-size: 16px;
+  color: var(--muted);
+  margin-bottom: 35px;
+  font-weight: 300;
+  max-width: 550px;
+  margin-left: auto; margin-right: auto;
+}
+.cta-links {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s;
+  background: var(--card);
+}
+.cta-link:hover {
+  border-color: var(--accent);
+  background: rgba(201,165,92,0.08);
+  transform: translateY(-2px);
+}
+.cta-link.primary {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+  font-weight: 600;
+}
+.cta-link.primary:hover {
+  background: #d4b068;
+  box-shadow: 0 6px 20px rgba(201,165,92,0.3);
+}
+
+.divider { width: 60px; height: 1px; background: var(--border); margin: 0 auto 30px; }
+
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px; height: 1em;
+  background: var(--accent);
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+  vertical-align: text-bottom;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .nav-dots { right: 15px; gap: 10px; }
+  .nav-dot .tooltip { display: none; }
+  .section { padding: 60px 24px; }
+  .hero { padding: 40px 24px; }
+  .hero-meta { gap: 16px; }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+  .credit-note { right: 20px; max-width: 180px; font-size: 8px; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<div class="credit-note">
+  Yes, I used <span class="me">Claude</span> to build this.<br>
+  But the words and the journey? <span class="me">Entirely mine.</span>
+</div>
+
+<nav class="nav-dots" id="navDots">
+  <div class="nav-dot active" data-section="0"><span class="tooltip">Intro</span></div>
+  <div class="nav-dot" data-section="1"><span class="tooltip">My Story</span></div>
+  <div class="nav-dot" data-section="2"><span class="tooltip">Experience</span></div>
+  <div class="nav-dot" data-section="3"><span class="tooltip">Toolkit</span></div>
+  <div class="nav-dot" data-section="4"><span class="tooltip">Why This Matters</span></div>
+  <div class="nav-dot" data-section="5"><span class="tooltip">Connect</span></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="sec-0">
+  <div class="hero-bg">
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+  </div>
+  <div class="hero-content">
+    <h1 class="hero-name">Shalin <span class="accent">Porwal</span></h1>
+
+    <div class="cfa-badge">
+      <div class="dot"></div>
+      <span>CFA Level 2 Candidate</span>
+    </div>
+
+    <div class="hero-tags">
+      <div class="hero-tag">Finance</div>
+      <div class="hero-tag">Valuation</div>
+      <div class="hero-tag">AI & Technology</div>
+      <div class="hero-tag">Tax Intelligence</div>
+    </div>
+
+    <div class="hero-meta">
+      <span>Woodbridge, NJ</span>
+      <span>(804) 325-9550</span>
+      <span>porwalshalin@gmail.com</span>
+    </div>
+
+    <div class="scroll-invite">
+      <p>Scroll down to get to know me</p>
+      <div class="scroll-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- MY STORY -->
+<section class="section" id="sec-1">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">01 — My Story</div>
+    </div>
+    <h2 class="section-heading reveal reveal-delay-1">Where valuation meets<br>tax intelligence<span class="typewriter-cursor"></span></h2>
+    <p class="section-text reveal reveal-delay-2">
+      My work sits at the intersection of <span class="highlight">investment analysis, taxation, and technology</span>. I turn fragmented financial and tax data into structured models and decision-ready insights. I understand how operating performance, tax mechanics, and capital decisions flow through to cash outcomes, and I've spent my career building the tools and judgment to make that process faster, cleaner, and more transparent.
+    </p>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="sec-2">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">02 — What I Bring</div>
+    </div>
+    <h2 class="section-heading reveal reveal-delay-1">Built on real<br>valuation work</h2>
+    <p class="section-text reveal reveal-delay-2">
+      At <strong>VVV Advisors</strong>, I work daily with closely held entities and complex investment structures, evaluating operating performance, normalization items, and tax attributes that directly impact <span class="highlight">cash flows and equity value</span>. I analyze income characterization across mutual funds, private funds, and partnerships, and model multi-year tax positions including basis adjustments, carryforwards, and timing differences. At <strong>Baker Tilly</strong>, I supported valuation analyses directly, running sensitivity analysis on key assumptions and contributing to assessments of business value under multiple scenarios.
+    </p>
+    <div class="timeline reveal reveal-delay-3">
+      <div class="timeline-item active">
+        <div class="timeline-date">Nov 2023 — Present</div>
+        <div class="timeline-role">Accounting Analyst</div>
+        <div class="timeline-company">VVV Advisors — Boutique CPA Firm (Tax Compliance & Advisory)</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">May 2022 — Jul 2022</div>
+        <div class="timeline-role">Summer Intern</div>
+        <div class="timeline-company">Baker Tilly US LLP, Mumbai</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Sep 2019 — Jul 2021</div>
+        <div class="timeline-role">Financial Analyst</div>
+        <div class="timeline-company">JC Kabra & Associates (Pharma & Healthcare Focus)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLKIT -->
+<section class="section" id="sec-3">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">03 — The Toolkit</div>
+    </div>
+    <h2 class="section-heading reveal reveal-delay-1">What I work with,<br>every day</h2>
+    <div class="skills-grid reveal reveal-delay-2">
+      <div class="skill-card">
+        <div class="icon">📊</div>
+        <h4>Valuation Methods</h4>
+        <p>DCF, market multiples, comparable transactions, scenario & sensitivity analysis</p>
+      </div>
+      <div class="skill-card">
+        <div class="icon">📐</div>
+        <h4>Excel & VBA</h4>
+        <p>Advanced financial modeling, automated workflows, macro-driven reporting</p>
+      </div>
+      <div class="skill-card">
+        <div class="icon">🐍</div>
+        <h4>Python & Power BI</h4>
+        <p>Data preparation, analytical dashboards, automated data pipelines</p>
+      </div>
+      <div class="skill-card">
+        <div class="icon">📜</div>
+        <h4>CFA Level 2</h4>
+        <p>Equity valuation, fixed income, financial reporting, and ethics</p>
+      </div>
+      <div class="skill-card">
+        <div class="icon">🏛️</div>
+        <h4>Tax & Financial Statements</h4>
+        <p>Business returns, normalization, income characterization, partnership structures</p>
+      </div>
+      <div class="skill-card">
+        <div class="icon">⚙️</div>
+        <h4>ERP & Systems</h4>
+        <p>SAP S/4HANA exposure, QuickBooks, ERP-driven financial datasets</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY THIS MATTERS -->
+<section class="section" id="sec-4">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">04 — Why This Matters to Me</div>
+    </div>
+    <h2 class="section-heading reveal reveal-delay-1">I've been building<br>toward this</h2>
+    <p class="section-text reveal reveal-delay-2">
+      Every role I've held, from analyzing pharma manufacturing costs in Mumbai to modeling tax positions on complex fund structures in New Jersey, has been a step toward doing <span class="highlight">valuation work full time</span>. That's not a pivot. That's the plan. I picked up a Masters in Decision Analytics to sharpen my quantitative edge. I'm sitting for the <strong>CFA Level 2</strong> because I want the depth, not just the credential. And I build things in Python and VBA on the side because I genuinely believe finance professionals should know how to automate what slows them down.
+    </p>
+    <p class="section-text reveal reveal-delay-3" style="margin-top: 20px;">
+      I'm not looking for just any seat. I want to be somewhere that takes valuation seriously, gives me room to grow across different types of engagements, and values people who bring both analytical rigor and a real interest in the work. That's what I see here.
+    </p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="sec-5">
+  <div class="cta-content reveal">
+    <div class="divider"></div>
+    <h2 class="cta-heading reveal reveal-delay-1">Let's <span style="color:var(--accent)">talk</span>.</h2>
+    <p class="cta-text reveal reveal-delay-2">
+      I'd welcome the chance to discuss how my background in financial analysis, tax advisory, and quantitative methods can add value to your team.
+    </p>
+    <div class="cta-links reveal reveal-delay-3">
+      <a href="mailto:porwalshalin@gmail.com" class="cta-link primary">✉ Email Me</a>
+      <a href="tel:+18043259550" class="cta-link">📞 (804) 325-9550</a>
+    </div>
+    <p style="margin-top:50px; font-size:13px; color:var(--muted); font-family:'JetBrains Mono',monospace; letter-spacing:1px;">
+      Sincerely, Shalin Porwal
+    </p>
+  </div>
+</section>
+
+<script>
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+const sections = document.querySelectorAll('[id^="sec-"]');
+const dots = document.querySelectorAll('.nav-dot');
+const secObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const idx = e.target.id.replace('sec-', '');
+      dots.forEach(d => d.classList.remove('active'));
+      dots[idx]?.classList.add('active');
+    }
+  });
+}, { threshold: 0.4 });
+sections.forEach(s => secObserver.observe(s));
+dots.forEach(d => {
+  d.addEventListener('click', () => {
+    document.getElementById('sec-' + d.dataset.section)?.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>
