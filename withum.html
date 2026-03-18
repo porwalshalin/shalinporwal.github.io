@@ -41,6 +41,7 @@ body::after {
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
 
+/* SHINY CREDIT NOTE */
 .credit-note {
   position: fixed;
   top: 20px;
@@ -52,12 +53,35 @@ body::after {
   letter-spacing: 0.5px;
   line-height: 1.6;
   text-align: right;
-  opacity: 0.5;
-  transition: opacity 0.3s;
   max-width: 260px;
+  background: linear-gradient(135deg, rgba(201,165,92,0.08), rgba(92,165,201,0.08));
+  border: 1px solid rgba(201,165,92,0.2);
+  border-radius: 8px;
+  padding: 8px 14px;
+  overflow: hidden;
 }
-.credit-note:hover { opacity: 0.85; }
-.credit-note .me { color: var(--accent); font-weight: 500; }
+.credit-note::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(201,165,92,0.25), rgba(92,165,201,0.15), transparent);
+  transform: skewX(-20deg);
+  animation: shimmer 3s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0% { left: -75%; }
+  100% { left: 150%; }
+}
+.credit-note .me { 
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 500;
+}
 
 .progress-bar {
   position: fixed;
@@ -111,14 +135,15 @@ body::after {
 }
 .nav-dot:hover .tooltip { opacity: 1; }
 
+/* HERO */
 .hero {
-  min-height: 100vh;
+  padding: 100px 40px 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
-  padding: 60px 40px;
+  min-height: 100vh;
 }
 
 .hero-bg {
@@ -284,11 +309,9 @@ body::after {
   50% { opacity: 0.3; transform: scaleY(0.5); }
 }
 
+/* SECTIONS */
 .section {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 80px 40px;
+  padding: 70px 40px;
   position: relative;
 }
 .section-inner {
@@ -316,9 +339,9 @@ body::after {
 
 .section-heading {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(28px, 4vw, 42px);
+  font-size: clamp(26px, 3.5vw, 38px);
   font-weight: 700;
-  margin-bottom: 30px;
+  margin-bottom: 24px;
   line-height: 1.25;
 }
 
@@ -341,18 +364,20 @@ body::after {
 .reveal-delay-1 { transition-delay: 0.15s; }
 .reveal-delay-2 { transition-delay: 0.3s; }
 .reveal-delay-3 { transition-delay: 0.45s; }
+.reveal-delay-4 { transition-delay: 0.6s; }
 
+/* SKILLS GRID */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
-  margin-top: 35px;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 14px;
+  margin-top: 30px;
 }
 .skill-card {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 22px;
+  padding: 20px;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
@@ -373,12 +398,13 @@ body::after {
   border-color: rgba(201,165,92,0.3);
   box-shadow: 0 8px 30px rgba(0,0,0,0.3);
 }
-.skill-card .icon { font-size: 22px; margin-bottom: 10px; }
-.skill-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 6px; color: var(--text); }
-.skill-card p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+.skill-card .icon { font-size: 20px; margin-bottom: 8px; }
+.skill-card h4 { font-size: 13px; font-weight: 600; margin-bottom: 5px; color: var(--text); }
+.skill-card p { font-size: 11.5px; color: var(--muted); line-height: 1.5; }
 
+/* TIMELINE */
 .timeline {
-  margin-top: 35px;
+  margin-top: 30px;
   position: relative;
   padding-left: 30px;
 }
@@ -389,7 +415,7 @@ body::after {
   width: 1px;
   background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
 }
-.timeline-item { position: relative; margin-bottom: 28px; }
+.timeline-item { position: relative; margin-bottom: 24px; }
 .timeline-item::before {
   content: '';
   position: absolute;
@@ -412,13 +438,46 @@ body::after {
 .timeline-role { font-weight: 600; font-size: 15px; margin-bottom: 2px; }
 .timeline-company { font-size: 13px; color: var(--muted); }
 
+/* BEYOND DESK */
+.hobbies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  margin-top: 30px;
+}
+.hobby-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 22px 20px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+.hobby-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(201,165,92,0.04), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.hobby-card:hover::after { opacity: 1; }
+.hobby-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(201,165,92,0.25);
+}
+.hobby-card .hobby-icon { font-size: 26px; margin-bottom: 10px; }
+.hobby-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 5px; color: var(--text); }
+.hobby-card p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+/* CTA */
 .cta-section {
-  min-height: 60vh;
+  padding: 80px 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 80px 40px;
 }
 .cta-content { position: relative; }
 .cta-heading {
@@ -490,11 +549,11 @@ body::after {
 @media (max-width: 768px) {
   .nav-dots { right: 15px; gap: 10px; }
   .nav-dot .tooltip { display: none; }
-  .section { padding: 60px 24px; }
-  .hero { padding: 40px 24px; }
+  .section { padding: 50px 24px; }
+  .hero { padding: 60px 24px 60px; }
   .hero-meta { gap: 16px; }
   .skills-grid { grid-template-columns: 1fr 1fr; }
-  .credit-note { right: 20px; max-width: 180px; font-size: 8px; }
+  .credit-note { right: 14px; max-width: 180px; font-size: 8px; top: 14px; }
 }
 </style>
 </head>
@@ -512,8 +571,9 @@ body::after {
   <div class="nav-dot" data-section="1"><span class="tooltip">My Story</span></div>
   <div class="nav-dot" data-section="2"><span class="tooltip">Experience</span></div>
   <div class="nav-dot" data-section="3"><span class="tooltip">Toolkit</span></div>
-  <div class="nav-dot" data-section="4"><span class="tooltip">Why This Matters</span></div>
-  <div class="nav-dot" data-section="5"><span class="tooltip">Connect</span></div>
+  <div class="nav-dot" data-section="4"><span class="tooltip">Why This</span></div>
+  <div class="nav-dot" data-section="5"><span class="tooltip">Beyond the Desk</span></div>
+  <div class="nav-dot" data-section="6"><span class="tooltip">Connect</span></div>
 </nav>
 
 <!-- HERO -->
@@ -525,25 +585,21 @@ body::after {
   </div>
   <div class="hero-content">
     <h1 class="hero-name">Shalin <span class="accent">Porwal</span></h1>
-
     <div class="cfa-badge">
       <div class="dot"></div>
       <span>CFA Level 2 Candidate</span>
     </div>
-
     <div class="hero-tags">
-      <div class="hero-tag">Finance</div>
       <div class="hero-tag">Valuation</div>
-      <div class="hero-tag">AI & Technology</div>
       <div class="hero-tag">Tax Intelligence</div>
+      <div class="hero-tag">Financial Analysis</div>
+      <div class="hero-tag">Automation</div>
     </div>
-
     <div class="hero-meta">
       <span>Woodbridge, NJ</span>
       <span>(804) 325-9550</span>
       <span>porwalshalin@gmail.com</span>
     </div>
-
     <div class="scroll-invite">
       <p>Scroll down to get to know me</p>
       <div class="scroll-line"></div>
@@ -557,9 +613,9 @@ body::after {
     <div class="reveal">
       <div class="section-label">01 — My Story</div>
     </div>
-    <h2 class="section-heading reveal reveal-delay-1">Where valuation meets<br>tax intelligence<span class="typewriter-cursor"></span></h2>
+    <h2 class="section-heading reveal reveal-delay-1">Where tax mechanics meet<br>valuation outcomes<span class="typewriter-cursor"></span></h2>
     <p class="section-text reveal reveal-delay-2">
-      My work sits at the intersection of <span class="highlight">investment analysis, taxation, and technology</span>. I turn fragmented financial and tax data into structured models and decision-ready insights. I understand how operating performance, tax mechanics, and capital decisions flow through to cash outcomes, and I've spent my career building the tools and judgment to make that process faster, cleaner, and more transparent.
+      My work sits at the intersection of <span class="highlight">business valuation, tax analysis, and financial modeling</span>. I spend my days spreading tax returns, normalizing owner-level financials, and connecting entity-level tax costs to cash flow and value outcomes. I don't treat tax and valuation as separate disciplines — I treat them as two lenses on the same question: what is this business actually worth, and what does an owner actually take home?
     </p>
   </div>
 </section>
@@ -572,7 +628,7 @@ body::after {
     </div>
     <h2 class="section-heading reveal reveal-delay-1">Built on real<br>valuation work</h2>
     <p class="section-text reveal reveal-delay-2">
-      At <strong>VVV Advisors</strong>, I work daily with closely held entities and complex investment structures, evaluating operating performance, normalization items, and tax attributes that directly impact <span class="highlight">cash flows and equity value</span>. I analyze income characterization across mutual funds, private funds, and partnerships, and model multi-year tax positions including basis adjustments, carryforwards, and timing differences. At <strong>Baker Tilly</strong>, I supported valuation analyses directly, running sensitivity analysis on key assumptions and contributing to assessments of business value under multiple scenarios.
+      At <strong>VVV Advisors</strong>, I spread 3-5 years of 1120S and 1065 filings across closely held business engagements, normalizing for owner compensation, personal expenses, and non-recurring items to derive clean <span class="highlight">SDE and EBITDA baselines</span>. I analyze working capital trends, flag income-distribution inconsistencies, and assess CFC, GILTI, and PFIC exposures — quantifying how international tax structures affect after-tax cash flows and investor returns. At <strong>Baker Tilly</strong>, I supported valuation analyses directly, running sensitivity analysis on key assumptions and preparing Excel-based workpapers for senior review.
     </p>
     <div class="timeline reveal reveal-delay-3">
       <div class="timeline-item active">
@@ -605,32 +661,42 @@ body::after {
       <div class="skill-card">
         <div class="icon">📊</div>
         <h4>Valuation Methods</h4>
-        <p>DCF, market multiples, comparable transactions, scenario & sensitivity analysis</p>
+        <p>DCF, market multiples, comparable transactions, SDE/EBITDA normalization, scenario & sensitivity analysis</p>
+      </div>
+      <div class="skill-card">
+        <div class="icon">📋</div>
+        <h4>Financial Statement Spreading</h4>
+        <p>1120S, 1065, 1040 business returns; multi-year normalization; working capital & debt capacity analysis</p>
+      </div>
+      <div class="skill-card">
+        <div class="icon">🌐</div>
+        <h4>International Tax Structures</h4>
+        <p>CFC, GILTI, PFIC analysis; tested income calculations; after-tax cash flow impact on valuation</p>
       </div>
       <div class="skill-card">
         <div class="icon">📐</div>
         <h4>Excel & VBA</h4>
-        <p>Advanced financial modeling, automated workflows, macro-driven reporting</p>
+        <p>Advanced financial modeling, macro-driven automation, multi-year consolidation workflows</p>
       </div>
       <div class="skill-card">
         <div class="icon">🐍</div>
         <h4>Python & Power BI</h4>
-        <p>Data preparation, analytical dashboards, automated data pipelines</p>
+        <p>Data preparation pipelines, analytical dashboards, automated reporting across client files</p>
+      </div>
+      <div class="skill-card">
+        <div class="icon">🗂️</div>
+        <h4>Tax Software & Systems</h4>
+        <p>CCH Axcess, QuickBooks; workpaper preparation; client deliverable drafting for senior review</p>
       </div>
       <div class="skill-card">
         <div class="icon">📜</div>
         <h4>CFA Level 2</h4>
-        <p>Equity valuation, fixed income, financial reporting, and ethics</p>
+        <p>Equity valuation, financial reporting & analysis, fixed income, derivatives — August 2026</p>
       </div>
       <div class="skill-card">
-        <div class="icon">🏛️</div>
-        <h4>Tax & Financial Statements</h4>
-        <p>Business returns, normalization, income characterization, partnership structures</p>
-      </div>
-      <div class="skill-card">
-        <div class="icon">⚙️</div>
-        <h4>ERP & Systems</h4>
-        <p>SAP S/4HANA exposure, QuickBooks, ERP-driven financial datasets</p>
+        <div class="icon">🔎</div>
+        <h4>Research & Reporting</h4>
+        <p>Industry & macroeconomic research, third-party appraisal review, analytical memo writing</p>
       </div>
     </div>
   </div>
@@ -644,16 +710,51 @@ body::after {
     </div>
     <h2 class="section-heading reveal reveal-delay-1">I've been building<br>toward this</h2>
     <p class="section-text reveal reveal-delay-2">
-      Every role I've held, from analyzing pharma manufacturing costs in Mumbai to modeling tax positions on complex fund structures in New Jersey, has been a step toward doing <span class="highlight">valuation work full time</span>. That's not a pivot. That's the plan. I picked up a Masters in Decision Analytics to sharpen my quantitative edge. I'm sitting for the <strong>CFA Level 2</strong> because I want the depth, not just the credential. And I build things in Python and VBA on the side because I genuinely believe finance professionals should know how to automate what slows them down.
+      Every role I've held — from analyzing pharma manufacturing costs in Mumbai to modeling tax positions on complex fund structures in New Jersey — has been a step toward doing <span class="highlight">valuation work full time</span>. That's not a pivot. That's the plan.
     </p>
     <p class="section-text reveal reveal-delay-3" style="margin-top: 20px;">
-      I'm not looking for just any seat. I want to be somewhere that takes valuation seriously, gives me room to grow across different types of engagements, and values people who bring both analytical rigor and a real interest in the work. That's what I see here.
+      I picked up a Masters in Decision Analytics to sharpen my quantitative edge. I'm sitting for <strong>CFA Level 2</strong> because I want the depth, not just the credential. And I build automated Excel and Python workflows on the side because I genuinely believe finance professionals should know how to eliminate what slows them down — and spend that time on judgment calls instead.
     </p>
   </div>
 </section>
 
+<!-- BEYOND THE DESK -->
+<section class="section" id="sec-5">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">05 — Beyond the Desk</div>
+    </div>
+    <h2 class="section-heading reveal reveal-delay-1">Discipline doesn't<br>clock out</h2>
+    <p class="section-text reveal reveal-delay-2">
+      The same mindset that gets me through a marathon training block or a 20km trek is what I bring to complex engagements — <span class="highlight">sustained effort over discomfort</span>, not sprints. I read broadly across markets, behavioral finance, and economic history because I think context makes better analysts. And travel has taught me to read situations quickly and adapt — a skill that matters more in client work than most people admit.
+    </p>
+    <div class="hobbies-grid reveal reveal-delay-3">
+      <div class="hobby-card">
+        <div class="hobby-icon">🏃</div>
+        <h4>Marathon Running</h4>
+        <p>Long-distance training builds the same mental endurance that complex, multi-month engagements demand.</p>
+      </div>
+      <div class="hobby-card">
+        <div class="hobby-icon">🏔️</div>
+        <h4>Trekking</h4>
+        <p>Navigating uncertain terrain with incomplete information — sounds a lot like valuing a private company.</p>
+      </div>
+      <div class="hobby-card">
+        <div class="hobby-icon">✈️</div>
+        <h4>Travelling</h4>
+        <p>Exposure to different markets, economies, and ways of thinking sharpens how I read financial context.</p>
+      </div>
+      <div class="hobby-card">
+        <div class="hobby-icon">📚</div>
+        <h4>Reading</h4>
+        <p>Markets, behavioral finance, economic history. Understanding the past is how you build better models.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
-<section class="cta-section" id="sec-5">
+<section class="cta-section" id="sec-6">
   <div class="cta-content reveal">
     <div class="divider"></div>
     <h2 class="cta-heading reveal reveal-delay-1">Let's <span style="color:var(--accent)">talk</span>.</h2>
@@ -681,7 +782,7 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) e.target.classList.add('visible');
   });
-}, { threshold: 0.15 });
+}, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 const sections = document.querySelectorAll('[id^="sec-"]');
@@ -694,7 +795,7 @@ const secObserver = new IntersectionObserver((entries) => {
       dots[idx]?.classList.add('active');
     }
   });
-}, { threshold: 0.4 });
+}, { threshold: 0.35 });
 sections.forEach(s => secObserver.observe(s));
 dots.forEach(d => {
   d.addEventListener('click', () => {
